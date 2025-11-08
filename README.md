@@ -1,48 +1,75 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/QaCpgAB-)
-Assignment 2 – Fit & Interpret Probability
+# Claim Severity Analysis — Actuarial Data Analytics Project
 
-Distributions for Claim Severity
-**Course:** Data Analytics for Actuarial Science
-**Week:** 5
-**Dataset:** claim_severity.csv (column: claim_amount)
-**Deliverables:** Notebook + brief PDF summary + figures (Use proper naming format e.g. std_number-file_name-assignment2.ipynb)
+This project was originally developed as part of my **Data Analytics for Actuarial Science** coursework.  
+It has been adapted and expanded into a portfolio project to demonstrate my ability in **data cleaning**, **distribution fitting**, and **actuarial interpretation**.
 
-Learning Objectives
-• Diagnose heavy-tailed behavior in claim severities.
-• Fit candidate severity distributions (Lognormal, Gamma, Weibull, Pareto).
-• Compare models using information criteria and goodness-of-fit diagnostics.
-• Compute tail risk measures (VaR/TVaR) and interpret actuarially.
+---
 
-Part A — Exploratory Data Analysis (EDA) (10 pts)
-• Load claim_severity.csv and report: sample size n, mean, median, std, coefficient of variation,
-skewness, kurtosis.
-• Plot: histogram (density-scaled) with log-x, empirical CDF, and mean excess plot.
-• Write 2–3 sentences diagnosing tail heaviness.
+## Project Overview
+Insurance claim amounts often display **skewed and heavy-tailed** characteristics, making accurate modeling essential for pricing and risk management.  
+This project explores several probability distributions — **Lognormal, Gamma, Weibull, and Pareto** — to identify the most appropriate model for insurance claim severity data.
 
-Part B — Parametric Fits via MLE (30 pts)
-• Fit Lognormal, Gamma, Weibull, and Pareto using MLE.
-• Report parameter estimates and standard errors (or bootstrap CIs).
-• Overlay fitted densities on histogram (log-x).
+The analysis includes:
+- Exploratory Data Analysis (EDA)
+- Parameter estimation via Maximum Likelihood Estimation (MLE)
+- Model selection using AIC/BIC and goodness-of-fit tests
+- Tail risk evaluation using VaR and TVaR
+- Sensitivity analysis for model robustness
 
-Part C — Model Adequacy & Selection (30 pts)
-• Compute log-likelihood, AIC, and BIC. Rank models.
-• Goodness-of-fit: QQ-plots, KS and/or AD tests.
-• Select a preferred model and justify.
+---
 
-Part D — Tail Risk & Pricing (20 pts)
-• For preferred model, compute VaR95, VaR99, TVaR95, TVaR99.
-• Interpret tail measures for pricing and capital.
+## Methodology
 
-Part E — Sensitivity Check (10 pts)
-• Truncate top 1% of claims and refit preferred model.
-• Compare parameters and VaR/TVaR; discuss robustness.
+### **1. Exploratory Data Analysis**
+- Loaded `claim_severity.csv`
+- Computed descriptive statistics: mean, median, standard deviation, skewness, kurtosis
+- Created histogram (log-scale), empirical CDF, and mean excess plot
+- Diagnosed tail heaviness
 
-Bonus (+5 pts)
-Fit a truncated Lognormal or mixture (e.g., 2-component Lognormal) and compare AIC/BIC.
-Grading Rubric (100 pts)
-• EDA: 10
-• Fits: 30
-• Selection: 30
-• Tail risk: 20
-• Sensitivity: 10
-• Bonus: +5
+### **2. Parametric Fitting via MLE**
+- Fitted candidate distributions: Lognormal, Gamma, Weibull, Pareto
+- Estimated parameters and confidence intervals
+- Visualized fitted densities over histogram
+
+### **3. Model Adequacy & Selection**
+- Compared log-likelihood, AIC, and BIC
+- Conducted goodness-of-fit diagnostics (QQ-plots, KS/AD tests)
+- Selected the most suitable distribution and justified the choice
+
+### **4. Tail Risk & Pricing**
+- Computed Value-at-Risk (VaR) and Tail Value-at-Risk (TVaR) at 95% and 99% confidence levels
+- Interpreted results in the context of insurance pricing and capital requirements
+
+### **5. Sensitivity Check**
+- Truncated top 1% of claims
+- Re-fitted the selected distribution
+- Evaluated stability of fitted parameters and tail measures
+
+---
+
+## Tools & Libraries
+- **Python**: pandas, numpy, scipy.stats, matplotlib, seaborn
+- **Jupyter Notebook** for analysis and documentation
+- **Statistical fitting** using Maximum Likelihood Estimation
+- **Goodness-of-fit tests** (Kolmogorov–Smirnov, Anderson–Darling)
+
+---
+
+## Key Insights
+- Claim severity data shows strong **right-skewness** and **heavy tails**.  
+- **Lognormal** and **Pareto** distributions gave the best fits depending on tail emphasis.  
+- Tail measures (VaR/TVaR) highlight substantial potential losses, supporting the need for robust capital management.
+
+---
+
+## Project Structure
+ claim-severity-analysis/
+│
+├── claim_severity.csv             # Raw dataset
+├── claim_severity_analysis.ipynb  # Main notebook
+├── README.md                      # Project description (this file)
+└── outputs/
+    ├── fitted_distributions.png
+    ├── qq_plots.png
+    └── tail_metrics_summary.pdf
+
